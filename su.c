@@ -285,7 +285,7 @@ int access_disabled(const struct su_initiator *from) {
     size_t len;
 
     data = read_file("/system/build.prop");
-    if (check_property(data, "ro.cm.version")) {
+    if (check_property(data, "ro.nfx.version")) {
         get_property(data, build_type, "ro.build.type", "");
         free(data);
 
@@ -312,7 +312,7 @@ int access_disabled(const struct su_initiator *from) {
         /* enforce persist.sys.root_access on non-eng builds for apps */
         if (strcmp("eng", build_type) != 0 &&
                 from->uid != AID_SHELL && from->uid != AID_ROOT &&
-                (atoi(enabled) & CM_ROOT_ACCESS_APPS_ONLY) != CM_ROOT_ACCESS_APPS_ONLY ) {
+                (atoi(enabled) & NFX_ROOT_ACCESS_APPS_ONLY) != NFX_ROOT_ACCESS_APPS_ONLY ) {
             ALOGE("Apps root access is disabled by system setting - "
                  "enable it under settings -> developer options");
             return 1;
@@ -320,7 +320,7 @@ int access_disabled(const struct su_initiator *from) {
 
         /* disallow su in a shell if appropriate */
         if (from->uid == AID_SHELL &&
-                (atoi(enabled) & CM_ROOT_ACCESS_ADB_ONLY) != CM_ROOT_ACCESS_ADB_ONLY ) {
+                (atoi(enabled) & NFX_ROOT_ACCESS_ADB_ONLY) != NFX_ROOT_ACCESS_ADB_ONLY ) {
             ALOGE("Shell root access is disabled by a system setting - "
                  "enable it under settings -> developer options");
             return 1;

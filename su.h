@@ -24,10 +24,10 @@
 #define LOG_TAG "su"
 
 // CyanogenMod-specific behavior
-#define CM_ROOT_ACCESS_DISABLED      0
-#define CM_ROOT_ACCESS_APPS_ONLY     1
-#define CM_ROOT_ACCESS_ADB_ONLY      2
-#define CM_ROOT_ACCESS_APPS_AND_ADB  3
+#define NFX_ROOT_ACCESS_DISABLED      0
+#define NFX_ROOT_ACCESS_APPS_ONLY     1
+#define NFX_ROOT_ACCESS_ADB_ONLY      2
+#define NFX_ROOT_ACCESS_APPS_AND_ADB  3
 
 #define DAEMON_SOCKET_PATH "/dev/socket/su-daemon/"
 
@@ -39,7 +39,7 @@
 #ifndef VERSION_CODE
 #define VERSION_CODE 16
 #endif
-#define VERSION xstr(VERSION_CODE) " cm-su"
+#define VERSION xstr(VERSION_CODE) " nfx-su"
 
 #define PROTO_VERSION 1
 
